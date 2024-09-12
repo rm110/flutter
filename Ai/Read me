@@ -1,0 +1,47 @@
+This YOLOv5-based fire detection model is built using several key tools and libraries, including Git, Roboflow, PyTorch, OpenCV, and Matplotlib. 
+The workflow involves:
+	⁃	Cloning the YOLOv5 repository.
+	⁃	Loading the required libraries.
+	⁃	Downloading a fire and smoke detection dataset from Roboflow.
+	⁃	Training the YOLOv5 model with specific parameters such as image size, epochs, and pre-trained weights.
+	⁃	Visualizing the training results using OpenCV and Matplotlib.
+	⁃	Performing inference on test images using a TensorFlow Lite version of the model, which can be integrated into a mobile app (like Flutter) but we havn’t had the time to test it with flutter app so we will use hugging face interface
+
+Code Description : 
+
+YOLOv5 (You Only Look Once version 5) is a model architecture that focuses on real-time object detection. The key feature is its ability to detect objects within images or video streams using a single neural network, which processes the image and predicts bounding boxes and class probabilities directly. In this case, the model is used for fire detection by recognizing fire, smoke, and possibly other relevant classes (like gas) in images or videos.
+
+
+
+ tools and libraries are used in this script, and what are their roles: 
+
+Git: Used to clone the YOLOv5 repository from GitHub. This repository contains the implementation of the YOLOv5 model and supporting scripts.
+Roboflow: A machine learning platform used for dataset management. The roboflow Python package is employed to download the dataset for fire and smoke detection.
+PyTorch (torch): The deep learning framework used to build and train the YOLOv5 model. PyTorch is essential for model training and handling the tensor computations required by the neural network.
+OpenCV (cv2): A library used for computer vision tasks, such as reading images and displaying results. In the final step, OpenCV is used to load and display training results.
+Matplotlib: A plotting library used to visualize the training results (e.g., loss curves, precision, recall).
+IPython: Provides interactive features for the notebook environment.
+os: Used to navigate directories and manage paths.
+These libraries and tools provide the infrastructure for downloading data, training the model, and visualizing results.
+
+How is the dataset managed and utilized: 
+
+The script uses the Roboflow API to download a dataset related to fire and smoke detection. After setting up the dataset directory in the environment variables, the Roboflow package is used to fetch the dataset from a specific project (dataset-for-fire-and-smoke-detection) hosted on Roboflow. The dataset is downloaded in a format compatible with YOLOv5, and its directory path is referenced in the training script.
+
+How is the model trained using the YOLOv5 framework :
+
+The model is trained using the YOLOv5 training script (train.py) with specific parameters:
+
+Image size (--img 416): Specifies that the input image size is 416x416 pixels.
+Epochs (--epochs 100): The model will train for 100 epochs, meaning it will go through the entire dataset 100 times.
+Weights (--weights yolov5n.pt): The model is initialized with pre-trained weights from the YOLOv5n (nano) version, which is optimized for speed and low computational resources.
+Dataset configuration (--data data.yaml): A YAML file specifies the dataset's structure (e.g., location of training, validation, and test images).
+Training outputs are stored in the directory /content/yolov5/runs/train/exp/, and the results (e.g., accuracy, loss) are saved as images.
+
+How are the training results visualized
+Answer:
+
+The training results are visualized using the OpenCV library. The script attempts to load an image (/content/yolov5/runs/train/exp/results.png), which contains visual metrics like the loss, precision, recall, and mAP (mean Average Precision) curves from the training process. This visualization helps evaluate how well the model is learning.
+Deploying a YOLOv5 model for fire detection on Hugging Face Spaces is a great way to make our model accessible via a web interface. 
+
+Hugging Face Spaces supports deploying applications via the Gradio or Streamlit framework, but due to lack of time we will make it in the next phase if we got qualified
