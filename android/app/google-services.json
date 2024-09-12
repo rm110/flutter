@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239513254097",
+    "project_id": "fire-project-a48ca",
+    "storage_bucket": "fire-project-a48ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239513254097:android:e33ed48d6c15147093adf0",
+        "android_client_info": {
+          "package_name": "com.example.fire_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXguQt4F5SBQw98_FLRXg_lzEwfGNcx1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
